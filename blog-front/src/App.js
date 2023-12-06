@@ -1,20 +1,29 @@
-import './App.css';
-import { NavbarDark } from './components/navbar';
-import { BlogList } from './components/blogList'
 import React, { useState } from 'react';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { NavbarDark } from './components/navbar';
+import { BlogList } from './components/blogList';
+import BlogDetailPage from './components/BlogDetailPage';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
-  const handleSearch = term => {
+
+  const handleSearch = (term) => {
     setSearchTerm(term);
   };
+
   return (
-    <div className="App mx-auto max-w-screen-xl px-3">
-      <NavbarDark onSearch={handleSearch}/>
-      <BlogList searchTerm={searchTerm}/>
-    </div>
+    <Router>
+      <div className="App mx-auto max-w-screen-xl px-3">
+        <NavbarDark onSearch={handleSearch} />
+        <Routes>
+        <Route path="/blogs/:id" element={<BlogDetailPage />} />
+
+          <Route path="/" element={  <BlogList searchTerm={searchTerm} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+

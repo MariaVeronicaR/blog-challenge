@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const TABLE_HEAD = ["Title", "Author", "Content", "Publication Date", ""];
 
@@ -14,8 +15,10 @@ export function BlogList({ searchTerm }) {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        // Actualizar la variable TABLE_ROWS con los datos obtenidos
-        setTableRows(data);
+        const sortedData = data.sort((a, b) => b.id - a.id);
+        
+        // Actualizar la variable tableRows con los datos ordenados
+        setTableRows(sortedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -51,9 +54,11 @@ export function BlogList({ searchTerm }) {
             return (
               <tr key={id}>
                 <td className={classes}>
+                <Link to={`/blogs/${id}`}>
                   <Typography variant="small" color="blue-gray" className="font-normal">
                     {title}
                   </Typography>
+                  </Link>
                 </td>
                 <td className={classes}>
                   <Typography variant="small" color="blue-gray" className="font-normal">
