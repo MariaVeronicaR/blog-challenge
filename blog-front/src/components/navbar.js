@@ -7,7 +7,7 @@ import {
   import React, { useState } from 'react';
   import  RenderIf  from './RenderIf';
   import { Modal } from './ModalAdd';
-  import { BrowserRouter as  Link, useLocation } from 'react-router-dom';
+  import {  Link, useLocation } from 'react-router-dom';
 
    
   export function NavbarDark({onSearch}) {
