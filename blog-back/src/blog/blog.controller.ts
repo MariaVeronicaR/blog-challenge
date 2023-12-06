@@ -40,8 +40,6 @@ export class BlogController {
     return this.blogService.findOne(id);
   }
 
-  
-  
   @Patch(':id')
   update(@Param('id') id: number, @Body() updateBlogDto: UpdateBlogDto) {
     return this.blogService.update(id, updateBlogDto);

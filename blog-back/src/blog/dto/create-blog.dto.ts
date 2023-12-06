@@ -8,9 +8,6 @@ export class CreateBlogDto {
     @IsString()
     author: string;
 
-    @IsDateString()
-    publicationDate: Date;
-
     @IsString()
     content: string;
 }

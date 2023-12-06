@@ -24,9 +24,9 @@ export function BlogList({ searchTerm }) {
         console.error("Error fetching data:", error);
       });
   }, [searchTerm]); // Ejecutar la solicitud cuando cambie el término de búsqueda
-
+ 
   return (
-    <Card className="h-full w-full overflow-scroll">
+    <Card className="h-full w-full overflow-scroll mb-3">
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
@@ -55,7 +55,7 @@ export function BlogList({ searchTerm }) {
               <tr key={id}>
                 <td className={classes}>
                 <Link to={`/blogs/${id}`}>
-                  <Typography variant="small" color="blue-gray" className="font-normal">
+                  <Typography variant="small" color="blue-gray" className="font-normal underline">
                     {title}
                   </Typography>
                   </Link>
@@ -67,7 +67,8 @@ export function BlogList({ searchTerm }) {
                 </td>
                 <td className={classes}>
                   <Typography variant="small" color="blue-gray" className="font-normal">
-                    {content}
+                    {/*Solo mostrar los primeros 70 caracteres de contenido*/}
+                    {content.slice(0, 70)}{content.length > 70 ? '...' : ''}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -76,9 +77,11 @@ export function BlogList({ searchTerm }) {
                   </Typography>
                 </td>
                 <td className={classes}>
-                  <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
-                    Edit
+                <Link to={`/blogs/${id}`}>
+                  <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium underline">
+                    Detail
                   </Typography>
+                  </Link>
                 </td>
               </tr>
             );

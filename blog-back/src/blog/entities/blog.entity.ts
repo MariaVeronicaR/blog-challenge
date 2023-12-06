@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, DeleteDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, DeleteDateColumn, BeforeInsert } from 'typeorm';
 
 @Entity()
 export class Blog {
@@ -19,5 +19,10 @@ export class Blog {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @BeforeInsert()
+  updatePublicationDate() {
+    this.publicationDate = new Date();
+  }
 }
 

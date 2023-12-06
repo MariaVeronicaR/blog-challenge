@@ -1,7 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import {
   Button,
   Dialog,
@@ -15,14 +13,12 @@ export function Modal() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
-  const [date, setDate] =  useState("");
 
   const handleOpen = () => {
     setOpen(!open);
     setTitle("");
     setAuthor("");
     setContent("");
-    setDate("");
   };
 
   let handleSubmit = async (e) => {
@@ -31,7 +27,6 @@ export function Modal() {
       console.log(typeof title);
       console.log(typeof author);
       console.log(typeof content);
-      console.log(typeof date);
       let res = await fetch(" http://localhost:8000/api/v1/blog", {
         method: "POST",
         headers: {
@@ -41,7 +36,6 @@ export function Modal() {
             "title": title,
             "author": author,
             "content": content,
-            "publicationDate": date.toISOString()
         }),
       });
       console.log(res.status)
@@ -50,9 +44,9 @@ export function Modal() {
         setTitle("");
         setAuthor("");
         setContent("");
-        setDate("");
         //Close Modal
-        handleOpen();
+        window.location.reload(true);
+      
       } else {
       }
     } catch (err) {
@@ -84,13 +78,7 @@ export function Modal() {
           placeholder="Author"
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <DatePicker
-        selected={date}
-        onChange={(e) => setDate(e)}
-        placeholderText="Publication Date (dd/MM/yyyy)"
-        className="mb-3 p-2 block w-[100%] border rounded-md border-sky-500 bg-[#adadad26]"
-        dateFormat="dd/MM/yyyy" // Puedes personalizar el formato de la fecha según tus necesidades
-        />
+        
         <textarea
           type="text"
           className="mb-3 p-2 w-full border rounded-md border-sky-500 bg-[#adadad26]"

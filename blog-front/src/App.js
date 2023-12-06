@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { NavbarDark } from './components/navbar';
-import { BlogList } from './components/blogList';
+import { NavbarDark } from './components/Navbar';
+import { BlogList } from './components/BlogList';
 import BlogDetailPage from './components/BlogDetailPage';
 
 function App() {
@@ -16,10 +16,12 @@ function App() {
       <div className="App mx-auto max-w-screen-xl px-3">
         <NavbarDark onSearch={handleSearch} />
         <Routes>
+        
         <Route path="/blogs/:id" element={<BlogDetailPage />} />
 
-          <Route path="/" element={  <BlogList searchTerm={searchTerm} />} />
+        <Route path="/" element={  <BlogList searchTerm={searchTerm} />} />
         </Routes>
+        
       </div>
     </Router>
   );

@@ -5,11 +5,13 @@ import {
     Input,
   } from "@material-tailwind/react";
   import React, { useState } from 'react';
+  import  RenderIf  from './RenderIf';
+  import { Modal } from './ModalAdd';
+  import { BrowserRouter as  Link, useLocation } from 'react-router-dom';
 
-  import { Modal } from './modalAdd'
    
-  
   export function NavbarDark({onSearch}) {
+    const location = useLocation();
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearch = (e) => {
@@ -32,9 +34,11 @@ import {
           >
             BLOGS
           </Typography>
+          <RenderIf condition={location.pathname === '/'}>
           <div className="ml-auto flex gap-1 md:mr-4">
             <Modal/>
           </div>
+          
           <div className="relative flex w-full gap-2 md:w-max">
             <Input
               type="search"
@@ -55,7 +59,19 @@ import {
               Search
             </Button>
           </div>
+          </RenderIf>
+          <RenderIf condition={location.pathname.startsWith('/blog')}>
+          <Link  
+          size="sm"
+          color="white"
+          to="/"
+          className="underline"
+          >
+           Back
+          </Link>
+          </RenderIf>
+         
         </div>
       </Navbar>
-    );
-  }
+    );}
+  

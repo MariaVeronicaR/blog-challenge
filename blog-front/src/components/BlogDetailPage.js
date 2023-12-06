@@ -19,15 +19,15 @@ const BlogDetailPage = () => {
   }, [id]);
 
   if (!blogDetails) {
-    return <div>Loading...</div>;
+    return <div className="bg-white border rounded-lg p-3"><h1>Loading...</h1></div>;
   }
 
   return (
-    <div>
-      <h1>{blogDetails.title}</h1>
-      <p>Author: {blogDetails.author}</p>
-      <p>Content: {blogDetails.content}</p>
-      <p>Publication Date: {blogDetails.publicationDate}</p>
+    <div className=" bg-white border rounded-lg p-3">
+      <h1> <b>Title:</b> {blogDetails.title}</h1>
+      <p> <b>Author:</b> {blogDetails.author}</p>
+      <p> <b>Publication Date</b>: {blogDetails.publicationDate}</p>
+      <p><b> Content:</b> {blogDetails.content}</p>
     </div>
   );
 };
