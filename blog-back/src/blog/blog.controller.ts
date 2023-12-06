@@ -13,6 +13,7 @@ export class BlogController {
 
   @Post()
   create(@Body() createBlogDto: CreateBlogDto) {
+    Logger.log("Creating blog")
     return this.blogService.create(createBlogDto);
   }
 
