@@ -12,17 +12,17 @@ Docker
 Node v18.17
 
 ### Levantamiento
-1.- Para iniciar la base de datos, se utiliza el archivo docker-compose.yml para crear un contenedor de MySQL con el siguiente comando:
+1.- Para dar inicio a la base de datos, se emplea el archivo docker-compose.yml, que facilita la creación de un contenedor de MySQL mediante el siguiente comando (por defecto, se iniciará en el puerto 3307):
 ```
 docker-compose up -d
 ```
-2.- Para iniciar el backend, se ejecutan los siguientes comandos en el directorio /blog-back:
+2.- En el directorio /blog-back, se procede a iniciar el backend ejecutando los siguientes comandos (por defecto, se activará en el puerto 8000):
 ```
 npm install
 npm start
 ```
 
-3.- Para iniciar el frontend, se ejecutan los siguientes comandos en el directorio /blog-front:
+3.- Similarmente, para iniciar el frontend, se ejecutan los siguientes comandos en el directorio /blog-front (por defecto, se desplegará en el puerto 3000):
 ```
 npm install
 npm start
